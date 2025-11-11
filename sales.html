@@ -1,67 +1,52 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Portfolio — Your Company</title>
-  <meta name="description" content="Selected projects showcasing our web designs and customer care solutions." />
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Sales — Ejis Cargo — Vehicles & Trucks</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html"><img src="assets/images/logo.png" alt="logo" class="logo"><span class="brand-text">Your Company</span></a>
-      <button class="nav-toggle" id="navToggle4" aria-expanded="false" aria-controls="siteNav4">Menu</button>
-      <nav id="siteNav4" class="site-nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html" class="active">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+      <a href="index.html" class="brand"><div class="logo-mark">EC</div><span class="brand-text">Ejis Cargo</span></a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="sales.html" class="active">Sales</a>
+        <a href="contact.html">Contact</a>
       </nav>
+      <button class="btn-primary" id="cartBtn2">Cart (<span id="cartCount2">0</span>)</button>
     </div>
   </header>
 
   <main class="container">
-    <h1>Portfolio</h1>
-    <p class="lead">Recent projects — click to view details (images are placeholders).</p>
+    <h1>Vehicles for Sale</h1>
+    <p class="lead">Browse our selection of cars and trucks. Add items to cart and pay securely via Paystack. Use the shipping inquiry to request container shipping.</p>
 
-    <section class="portfolio-grid">
-      <article class="project-card">
-        <img src="assets/images/project-1.jpg" alt="Project 1 screenshot">
-        <div class="project-body">
-          <h3>Project One — E-commerce launch</h3>
-          <p>Design and build of a fast, accessible storefront with product pages and checkout assistance flows.</p>
-          <a class="btn" href="#">Case study</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="assets/images/project-1.jpg" alt="Project 2 screenshot">
-        <div class="project-body">
-          <h3>Project Two — Service Booking Platform</h3>
-          <p>Custom booking interface with scheduler and user notifications.</p>
-          <a class="btn" href="#">Case study</a>
-        </div>
-      </article>
-
-      <article class="project-card">
-        <img src="assets/images/project-1.jpg" alt="Project 3 screenshot">
-        <div class="project-body">
-          <h3>Project Three — Knowledge base & support revamp</h3>
-          <p>Created searchable help center and canned replies — reduced response time by 40%.</p>
-          <a class="btn" href="#">Case study</a>
-        </div>
-      </article>
+    <section class="product-grid" id="productGrid">
+      <!-- Product cards will be injected by cart.js from PRODUCTS list -->
     </section>
   </main>
 
-  <footer class="site-footer container">
-    <p>&copy; <span id="yearPortfolio"></span> Your Company</p>
+  <footer class="site-footer">
+    <div class="container footer-inner"><p>&copy; <span id="yearSales"></span> Ejis Cargo</p></div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <div id="cartModal" class="cart-modal hidden" aria-hidden="true">
+    <div class="cart-content">
+      <button id="closeCart2" class="close">✕</button>
+      <h3>Your Cart</h3>
+      <div id="cartItems2"></div>
+      <div class="cart-actions">
+        <strong>Total: ₦<span id="cartTotal2">0</span></strong>
+        <button id="checkoutBtn2" class="btn btn-accent">Checkout — Paystack</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
