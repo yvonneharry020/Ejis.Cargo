@@ -3,30 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Your Company — Elegant web & digital services</title>
-  <meta name="description" content="Professional web design, customer care and writing services that elevate your brand." />
-  <link rel="icon" href="assets/images/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <title>Ejis Cargo — Trucks, Cars & Shipping (UK → Nigeria)</title>
+  <meta name="description" content="Ejis Cargo — We sell trucks & cars and ship vehicles/goods from the UK to Nigeria in 20ft and 40ft containers." />
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
   <header class="site-header">
     <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img src="assets/images/logo.png" alt="Your Company logo" class="logo">
-        <span class="brand-text">Your Company</span>
+      <a href="index.html" class="brand">
+        <div class="logo-mark">EC</div>
+        <span class="brand-text">Ejis Cargo</span>
       </a>
-      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
-      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
-        <ul>
-          <li><a href="index.html" class="active">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
+
+      <nav class="site-nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="sales.html">Sales</a>
+        <a href="contact.html">Contact</a>
       </nav>
+
+      <button class="btn-primary" id="cartBtn">Cart (<span id="cartCount">0</span>)</button>
     </div>
   </header>
 
@@ -34,58 +31,68 @@
     <section class="hero">
       <div class="container hero-inner">
         <div class="hero-copy">
-          <h1>Beautiful websites. Seamless support. Compelling content.</h1>
-          <p class="lead">We design and build fast, accessible websites, provide friendly customer care workflows, and write copy that converts.</p>
-          <p>
-            <a class="btn btn-primary" href="services.html">Our Services</a>
-            <a class="btn" href="portfolio.html">View Work</a>
-          </p>
+          <h1>Ejis Cargo — Trucks, Cars & Trusted UK→Nigeria Shipping</h1>
+          <p class="lead">Find quality trucks and cars, or ship your vehicle/goods in 20ft & 40ft containers with door-to-door delivery options.</p>
+          <div class="hero-actions">
+            <a class="btn btn-ghost" href="sales.html">Browse Vehicles</a>
+            <a class="btn" href="services.html">Shipping Services</a>
+          </div>
         </div>
         <div class="hero-image">
-          <img src="assets/images/hero.jpg" alt="Mockup showing website on devices">
+          <img src="https://images.unsplash.com/photo-1549921296-3f38f0d1f0f7?w=1200&q=80&auto=format&fit=crop" alt="Truck and car image">
         </div>
       </div>
     </section>
 
-    <section class="features container">
-      <article class="feature">
-        <h3>Design & Development</h3>
-        <p>Responsive sites built with modern best practices — fast load, SEO-ready, and accessible.</p>
+    <section class="highlights container">
+      <article>
+        <h3>Container Shipping</h3>
+        <p>20ft & 40ft containers; secure loading in the UK and fast sea transit to Lagos/Port Harcourt.</p>
       </article>
-      <article class="feature">
-        <h3>Customer Care Strategy</h3>
-        <p>Systems for delighting customers: knowledge bases, chat flows, and SLA-driven response handling.</p>
+      <article>
+        <h3>Buy Vehicles</h3>
+        <p>Curated trucks & cars — inspected, priced fairly, and available to ship.</p>
       </article>
-      <article class="feature">
-        <h3>Copy & Content</h3>
-        <p>Homepage, product pages, and email sequences written to convert and build trust.</p>
+      <article>
+        <h3>Door-to-Door Options</h3>
+        <p>Customs clearance, inland delivery, and tracking updates until the cargo reaches your doorstep.</p>
       </article>
-    </section>
-
-    <section class="testimonial container" aria-labelledby="testimonials-title">
-      <h2 id="testimonials-title">What clients say</h2>
-      <blockquote>
-        “They turned our idea into a beautiful website and set up a customer support flow that actually reduced tickets.” 
-        <cite>— A. Client, CEO</cite>
-      </blockquote>
     </section>
 
     <section class="cta container">
-      <h2>Ready to start?</h2>
-      <p>Get a free 30-minute consultation to roadmap your next site and support plan.</p>
-      <a class="btn btn-primary" href="contact.html">Book a call</a>
+      <h2>Ready to move forward?</h2>
+      <p>Request a shipping quote or buy a vehicle online — our team handles the rest.</p>
+      <a class="btn btn-accent" href="contact.html">Get a Quote / Inquire</a>
+    </section>
+
+    <section class="testimonials container">
+      <h2>What clients say</h2>
+      <blockquote>
+        “Ejis Cargo delivered my truck from the UK in great condition — excellent communication and fast customs handling.” <cite>— A satisfied customer</cite>
+      </blockquote>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p>&copy; <span id="year"></span> Your Company — All rights reserved.</p>
-      <nav aria-label="Footer">
-        <a href="privacy.html" hidden>Privacy</a>
-      </nav>
+      <p>&copy; <span id="year"></span> Ejis Cargo — All rights reserved.</p>
+      <small>Colors: Gray • Champagne Gold • Black</small>
     </div>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <div id="cartModal" class="cart-modal hidden" aria-hidden="true">
+    <div class="cart-content">
+      <button id="closeCart" class="close">✕</button>
+      <h3>Your Cart</h3>
+      <div id="cartItems"></div>
+      <div class="cart-actions">
+        <strong>Total: ₦<span id="cartTotal">0</span></strong>
+        <button id="checkoutBtn" class="btn btn-accent">Checkout — Paystack</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/cart.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
