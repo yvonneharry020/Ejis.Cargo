@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Contact & Shipping Inquiry — Ejis Cargo</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand"><div class="logo-mark">EC</div><span class="brand-text">Ejis Cargo</span></a>
+      <nav class="site-nav">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="sales.html">Sales</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Contact & Shipping Inquiry</h1>
+    <p class="lead">Fill the form below to request a shipping quote or general enquiry. We respond to inquiries within 24 hours.</p>
+
+    <form id="inquiryForm" class="form">
+      <label for="name">Full name</label>
+      <input id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required>
+
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" required>
+
+      <label for="serviceType">Service</label>
+      <select id="serviceType" name="serviceType">
+        <option value="vehicle_purchase">Vehicle purchase + shipping</option>
+        <option value="container_shipping">Container shipping (20ft)</option>
+        <option value="container_shipping_40">Container shipping (40ft)</option>
+        <option value="customs_help">Customs & clearance help</option>
+      </select>
+
+      <label for="details">Details</label>
+      <textarea id="details" name="details" rows="5" required></textarea>
+
+      <button type="submit" class="btn btn-accent">Send Inquiry</button>
+      <div id="inquiryMessage" class="note"></div>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><p>&copy; <span id="yearContact2"></span> Ejis Cargo</p></div>
+  </footer>
+
+  <script>
+    // submits inquiry to server if server present; otherwise logs to console/localStorage
+    const inquiryForm = document.getElementById('inquiryForm');
+    const msg = document.getElementById('inquiryMessage');
+
+    inquiryForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = {
+        name: document.getElementById('name').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        serviceType: document.getElementById('serviceType').value,
+        details: document.getElementById('details').value.trim(),
+        createdAt: new Date().toISOString()
+      };
+
+      // Try to POST to server orders endpoint (if server deployed)
+      try {
+        const serverUrl = window.SERVER_URL || '/'; // set SERVER_URL in main.js or env when deployed
+        const res = await fetch((serverUrl.endsWith('/') ? serverUrl : serverUrl + '/') + 'orders', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({ type: 'inquiry', payload: data })
+        });
+        if (res.ok) {
+          msg.textContent = 'Inquiry sent — we will contact you shortly.';
+          inquiryForm.reset();
+        } else {
+          const text = await res.text();
+          msg.textContent = 'Server error: ' + text + ' — saved locally.';
+          localStorage.setItem('ejis_inquiry_' + Date.now(), JSON.stringify(data));
+        }
+      } catch (err) {
+        console.warn('No server available:', err);
+        localStorage.setItem('ejis_inquiry_' + Date.now(), JSON.stringify(data));
+        msg.textContent = 'Saved locally. If you have deployed the server, inquiries will appear in admin.';
+      }
+    });
+  </script>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
