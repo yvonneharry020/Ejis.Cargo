@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Admin — Ejis Cargo Orders</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand"><div class="logo-mark">EC</div><span class="brand-text">Ejis Cargo — Admin</span></a>
+      <nav class="site-nav">
+        <a href="admin.html" class="active">Orders</a>
+        <a href="sales.html">Shop</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <h1>Orders & Inquiries</h1>
+    <p class="lead">This dashboard shows orders and shipping inquiries stored on the server.</p>
+
+    <div id="ordersList">Loading...</div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner"><p>&copy; <span id="yearAdmin"></span> Ejis Cargo</p></div>
+  </footer>
+
+  <script>
+    async function loadOrders() {
+      try {
+        const serverUrl = window.SERVER_URL || '/';
+        const res = await fetch((serverUrl.endsWith('/') ? serverUrl : serverUrl + '/') + 'orders');
+        if (!res.ok) throw new Error('Server returned ' + res.status);
+        const data = await res.json();
+        const wrap = document.getElementById('ordersList');
+        if (!data.length) {
+          wrap.innerHTML = '<p>No orders or inquiries yet.</p>';
+          return;
+        }
+        wrap.innerHTML = '';
+        data.reverse().forEach(item => {
+          const el = document.createElement('div');
+          el.className = 'order-card';
+          el.innerHTML = `<h3>${item.type === 'order' ? 'Order #' + item.id : 'Inquiry'}</h3>
+            <p><strong>Date:</strong> ${new Date(item.createdAt).toLocaleString()}</p>
+            <pre>${JSON.stringify(item, null, 2)}</pre>`;
+          wrap.appendChild(el);
+        });
+      } catch (err) {
+        document.getElementById('ordersList').textContent = 'Could not load orders — is the server running? ' + err.message;
+      }
+    }
+    loadOrders();
+  </script>
+</body>
+</html>
