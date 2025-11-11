@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Your Company — Elegant web & digital services</title>
+  <meta name="description" content="Professional web design, customer care and writing services that elevate your brand." />
+  <link rel="icon" href="assets/images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="assets/images/logo.png" alt="Your Company logo" class="logo">
+        <span class="brand-text">Your Company</span>
+      </a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="siteNav">Menu</button>
+      <nav id="siteNav" class="site-nav" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1>Beautiful websites. Seamless support. Compelling content.</h1>
+          <p class="lead">We design and build fast, accessible websites, provide friendly customer care workflows, and write copy that converts.</p>
+          <p>
+            <a class="btn btn-primary" href="services.html">Our Services</a>
+            <a class="btn" href="portfolio.html">View Work</a>
+          </p>
+        </div>
+        <div class="hero-image">
+          <img src="assets/images/hero.jpg" alt="Mockup showing website on devices">
+        </div>
+      </div>
+    </section>
+
+    <section class="features container">
+      <article class="feature">
+        <h3>Design & Development</h3>
+        <p>Responsive sites built with modern best practices — fast load, SEO-ready, and accessible.</p>
+      </article>
+      <article class="feature">
+        <h3>Customer Care Strategy</h3>
+        <p>Systems for delighting customers: knowledge bases, chat flows, and SLA-driven response handling.</p>
+      </article>
+      <article class="feature">
+        <h3>Copy & Content</h3>
+        <p>Homepage, product pages, and email sequences written to convert and build trust.</p>
+      </article>
+    </section>
+
+    <section class="testimonial container" aria-labelledby="testimonials-title">
+      <h2 id="testimonials-title">What clients say</h2>
+      <blockquote>
+        “They turned our idea into a beautiful website and set up a customer support flow that actually reduced tickets.” 
+        <cite>— A. Client, CEO</cite>
+      </blockquote>
+    </section>
+
+    <section class="cta container">
+      <h2>Ready to start?</h2>
+      <p>Get a free 30-minute consultation to roadmap your next site and support plan.</p>
+      <a class="btn btn-primary" href="contact.html">Book a call</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <p>&copy; <span id="year"></span> Your Company — All rights reserved.</p>
+      <nav aria-label="Footer">
+        <a href="privacy.html" hidden>Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
